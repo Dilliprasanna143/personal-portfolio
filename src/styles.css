@@ -1,0 +1,141 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --font-display: "Space Grotesk", "Inter", sans-serif;
+  --font-sans: "Inter", sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-glass: var(--glass);
+  --color-glass-border: var(--glass-border);
+}
+
+:root {
+  --radius: 1rem;
+  --background: oklch(0.16 0.035 275);
+  --foreground: oklch(0.97 0.008 275);
+  --card: oklch(0.21 0.04 275);
+  --card-foreground: oklch(0.97 0.008 275);
+  --popover: oklch(0.21 0.04 275);
+  --popover-foreground: oklch(0.97 0.008 275);
+  --primary: oklch(0.66 0.19 262);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.28 0.05 280);
+  --secondary-foreground: oklch(0.97 0.008 275);
+  --muted: oklch(0.26 0.04 278);
+  --muted-foreground: oklch(0.72 0.03 278);
+  --accent: oklch(0.65 0.2 305);
+  --accent-foreground: oklch(0.99 0 0);
+  --destructive: oklch(0.6 0.23 27);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: oklch(0.66 0.19 262);
+  --glass: oklch(1 0 0 / 6%);
+  --glass-border: oklch(1 0 0 / 14%);
+
+  --gradient-brand: linear-gradient(120deg, oklch(0.66 0.19 262), oklch(0.65 0.2 305));
+  --gradient-soft: linear-gradient(
+    140deg,
+    color-mix(in oklab, oklch(0.66 0.19 262) 18%, transparent),
+    color-mix(in oklab, oklch(0.65 0.2 305) 14%, transparent)
+  );
+  --shadow-glow: 0 20px 60px -20px color-mix(in oklab, oklch(0.66 0.19 262) 55%, transparent);
+  --shadow-card: 0 18px 50px -24px oklch(0 0 0 / 60%);
+}
+
+.light {
+  --background: oklch(0.985 0.006 275);
+  --foreground: oklch(0.2 0.04 275);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.2 0.04 275);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.2 0.04 275);
+  --secondary: oklch(0.94 0.015 275);
+  --secondary-foreground: oklch(0.2 0.04 275);
+  --muted: oklch(0.95 0.012 275);
+  --muted-foreground: oklch(0.45 0.03 278);
+  --border: oklch(0.2 0.04 275 / 12%);
+  --input: oklch(0.2 0.04 275 / 14%);
+  --glass: oklch(1 0 0 / 65%);
+  --glass-border: oklch(0.2 0.04 275 / 10%);
+  --shadow-card: 0 18px 50px -28px oklch(0.3 0.06 275 / 35%);
+}
+
+@utility glass {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(18px) saturate(140%);
+  box-shadow: var(--shadow-card);
+}
+
+@utility gradient-text {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility gradient-brand {
+  background: var(--gradient-brand);
+}
+
+@utility glow {
+  box-shadow: var(--shadow-glow);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+  }
+}
